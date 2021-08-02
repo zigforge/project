@@ -5,9 +5,9 @@ This project is for the prediction of Student’s O-level mathematics examinatio
 The following features are provided:
 
 **Independent Features:**
-* `number_of_siblings`:  Number of siblings
-* 'direct_admission ' ; Mode of entering the school
-* 'CCA' ; Enrolled CCA
+* `number_of_siblings:`  Number of siblings
+* `direct_admission:` Mode of entering the school
+* `CCA:` Enrolled CCA
 * 'learning_style' ;  Primary learning style
 * 'tuition' ; Indication of whether the student has a tuition
 * 'n_male' ; Number of male classmates
