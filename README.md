@@ -1,6 +1,25 @@
+## Name
+Yee Yon Fai
+yyonfai@gmail.com
+
 # MACHINE LEARNING PIPELINE 
 
 This project is for the prediction of Student’s O-level mathematics examination score using hyperparameter testing and machine learning alogrithm
+
+## Directory structure
+```
+├── scr
+|   └── configs.py // Algorithms parameters
+|   └── ml_models.py // Load ML model
+|   └── utils.py // Data preprocessing
+├── data
+    └── score.db
+├── eda.ipnb // Exploratory data analysis    
+├── run.py 
+├── run.sh 
+├── requirements.txt 
+
+
 
 The following features are provided:
 
@@ -29,6 +48,43 @@ The following features are provided:
 4) Students with less than 7 hours of sleeping time tend to have lower attendance rate, they may be tired due to lack of sleep and skip school. Because they have less attendance rate, they tend to fall back on their studies and thus getting lower score.
 5) Students who are have direct admission to their school tend to perform better than average students.
 6) There are duplicates, missing values in the dataset and require cleaning.
+
+
+| Algorithm            | Parameters                       |
+| -------------------- | ---------------------------------|
+| Random Forest        | n_estimators  |
+| K Nearest Neighbors  | n_neighbors, algorithm, weights  |
+| Lasso                | alpha                            |
+| Ridge                | alpha                            |
+| Linear Regression    | fit_intercept                    |
+
+
+I have different range of values for parameters of these machine learning models and have used GridSearchCV technique to choose best values for final models. The values of these parameters can be changed from config.py file. In Random Forest, by increasing the value of  ‘n_estimators’ parameter increase the performance of the model, but training time also increases. 
+
+In KNN, with n_neighbors as 15, ‘auto’ algorithm and ‘distance’ weights, the model’s performance is stable but not good as Random Forest. The performance of Random Forest is good as compared to Random Forest. Similarly, for regression algorithms only on parameter ‘alpha’ is tuned in case of Ridge & Lasso. For Linear Regression, I have tuned ‘fit_intercept’ parameter. For Ridge, the best value for alpha was around 1.75 and 0.01 for Lasso. 
+
+For Linear Regression, the True value for ‘fit_intercept’ is best value. 
+
+To study this problem as classification problem I have divided final test score into 2 bins assuming 0-60 as [0:’fail’] and 60-100 as [1:’pass’]. To make this problem, a multi class problem I have divided the ‘final_test’ column into 3 bins assuming 0-50 as [0:’fail’], 51-70 as [1:’average’] and 71-100 as [2:’excellent’]. The data processing pipeline includes, handling null values, standardizing data values and encoding labels for categorical columns. 
+
+In model training Pipeline, scaling and training model is included where scaling (Standard or MinAbs) based on configs is applied on dataset before training or evaluating machine learning model. User can also provide tuning parameters for machine learning models through config file. To obtain best parameters, I have used GridSearchCV method and used best estimator for final evaluation. 
+
+### Choice of Algorithm
+Since we have a relatively large dataset, the Random forest will reduce variance part of error rather than bias part, so on a given training data set decision tree may be more accurate than a random forest. But on an unexpected validation data set, Random forest always wins in terms of accuracy.
+
+The best random forest regressor model:
+{'bootstrap': True,
+ 'max_depth': 20,
+ 'max_features': 'auto',
+ 'min_samples_leaf': 1,
+ 'min_samples_split': 10,
+ 'n_estimators': 500}
+
+Mean Absolute Error (MAE): 5.474026625082996
+Mean Squared Error (MSE): 54.39665613036192
+Root Mean Squared Error (RMSE): 7.375408878859661
+Mean Absolute Percentage Error (MAPE): 8.53
+Accuracy: 91.47
 
 ## Table of Content
 1) Overview of the machine learning pipeline
@@ -61,6 +117,7 @@ Unsupervised Learning Models
 - Random Forest Classifier
 - Random Forest Regressor
 
+
 #### Step f) Results
 The machine learning pipelin will provide you with the following results
 - Model performance table (on the training set)
@@ -88,14 +145,6 @@ Paste the following command on your bash terminal to run the machine learning pr
 ```
 ./run.sh
 ```
-
-| Algorithm            | Parameters                       |
-| -------------------- | ---------------------------------|
-| Random Forest        | n_estimators  |
-| K Nearest Neighbors  | n_neighbors, algorithm, weights  |
-| Lasso                | alpha                            |
-| Ridge                | alpha                            |
-| Linear Regression    | fit_intercept                    |
 
 
 
