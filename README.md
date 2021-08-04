@@ -77,9 +77,13 @@ The best random forest regressor model:
  'n_estimators': 500}
 
 Mean Absolute Error (MAE): 5.474026625082996
+
 Mean Squared Error (MSE): 54.39665613036192
+
 Root Mean Squared Error (RMSE): 7.375408878859661
+
 Mean Absolute Percentage Error (MAPE): 8.53
+
 Accuracy: 91.47
 
 ## Table of Content
