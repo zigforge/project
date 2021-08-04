@@ -1,7 +1,3 @@
-## Name
-Yee Yon Fai
-yyonfai@gmail.com
-
 # MACHINE LEARNING PIPELINE 
 
 This project is for the prediction of Student’s O-level mathematics examination score using hyperparameter testing and machine learning alogrithm
